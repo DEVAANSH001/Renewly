@@ -17,12 +17,12 @@ import {
   X,
   ExternalLink,
   Terminal,
-  Github,
-  Twitter
+  
 } 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 from 'lucide-react';
+import { FaGithub as Github, FaTwitter as Twitter,  } from 'react-icons/fa';
+
 
 const sidebarItems = [
   {

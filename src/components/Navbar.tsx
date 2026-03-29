@@ -3,8 +3,7 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Button } from '@blinkdotnew/ui';
 import { ArrowRight } 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 from 'lucide-react';
 
 const Navbar: React.FC = () => {

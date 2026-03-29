@@ -1,8 +1,5 @@
 import React from 'react';
-import { Github, Twitter, Linkedin, Youtube } 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-from 'lucide-react';
+import { FaGithub as Github, FaTwitter as Twitter, FaLinkedin as Linkedin, FaYoutube as Youtube } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   return (

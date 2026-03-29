@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Shield, LayoutDashboard, Clock, Mail, ShieldCheck, Zap, MessageCircle }
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 from 'lucide-react';
 
 const features = [

@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@blinkdotnew/ui';
 import { ArrowRight } 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 from 'lucide-react';
 
 const CtaSection: React.FC = () => {

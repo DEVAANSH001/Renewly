@@ -3,8 +3,7 @@ import { motion } from 'framer-motion';
 import VideoPlayer from './VideoPlayer';
 import { Button } from '@blinkdotnew/ui';
 import { Bell, Zap, Shield, ArrowRight } 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+
 from 'lucide-react';
 
 const badges = [
