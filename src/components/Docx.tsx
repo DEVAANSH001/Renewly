@@ -5,13 +5,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import { 
-  ChevronRight, 
   Copy, 
   Check, 
   Lock, 
   User, 
   CreditCard, 
-  Zap, 
   Menu, 
   X,
   ExternalLink,
