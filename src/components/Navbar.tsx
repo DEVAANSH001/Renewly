@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Button } from '@blinkdotnew/ui';
 import { ArrowRight } 
 
 from 'lucide-react';
+
+const MAIN_API_URL = 'https://renewly-api-fl2k.onrender.com/docs';
 
 const Navbar: React.FC = () => {
   const { scrollY } = useScroll();
@@ -35,14 +36,14 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/#features" className="text-sm text-gray-400 hover:text-white transition-colors relative group py-2">
+          <a href="/#features" className="text-sm text-gray-400 hover:text-white transition-colors relative group py-2">
             Features
             <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-          </Link>
-          <Link to="/#how-it-works" className="text-sm text-gray-400 hover:text-white transition-colors relative group py-2">
+          </a>
+          <a href="/#how-it-works" className="text-sm text-gray-400 hover:text-white transition-colors relative group py-2">
             How it Works
             <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-          </Link>
+          </a>
           <Link to="/docs"  rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-white transition-colors relative group py-2">
             Docs
             <span className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-teal to-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
@@ -50,10 +51,12 @@ const Navbar: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="text-sm text-white hidden sm:flex">Log In</Button>
-          <Button className="rounded-full bg-gradient-to-br from-white to-gray-300 text-black border-none hover:opacity-90 font-medium px-5 group">
-            Get Started Free <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <a href={MAIN_API_URL} target="_blank" rel="noreferrer" className="hidden sm:flex text-sm text-gray-400 hover:text-white transition-colors">
+            Live API
+          </a>
+          <Link to="/docs" className="inline-flex items-center rounded-full bg-gradient-to-br from-white to-gray-300 text-black border-none hover:opacity-90 font-medium px-5 py-2 group transition-opacity">
+            View Docs <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
       </div>
     </motion.nav>

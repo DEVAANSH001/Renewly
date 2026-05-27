@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 import { 
-  Search, 
   ChevronRight, 
   Copy, 
   Check, 
@@ -17,11 +16,12 @@ import {
   X,
   ExternalLink,
   Terminal,
-  
 } 
 
 from 'lucide-react';
 import { FaGithub as Github, FaTwitter as Twitter,  } from 'react-icons/fa';
+
+const MAIN_API_URL = 'https://renewly-api-fl2k.onrender.com/api';
 
 
 const sidebarItems = [
@@ -30,15 +30,13 @@ const sidebarItems = [
     items: [
       { name: 'Introduction', id: 'introduction' },
       { name: 'Quick Start', id: 'quick-start' },
-      { name: 'Authentication', id: 'authentication' },
     ]
   },
   {
-    title: 'Authentication',
+    title: 'Authentication API',
     items: [
-      { name: 'Sign Up', id: 'auth-sign-up' },
-      { name: 'Sign In', id: 'auth-sign-in' },
-      { name: 'Sign Out', id: 'auth-sign-out' },
+      { name: 'Endpoint Index', id: 'endpoint-index' },
+      { name: 'Auth Endpoints', id: 'auth-api' },
     ]
   },
   {
@@ -144,7 +142,6 @@ const tocItems = [
   { name: 'Introduction', id: 'introduction', level: 0 },
   { name: 'Quick Start', id: 'quick-start', level: 0 },
   { name: 'Base URL', id: 'quick-start', level: 1 },
-  { name: 'Authentication', id: 'authentication', level: 1 },
   { name: 'Endpoint Index', id: 'endpoint-index', level: 0 },
   { name: 'Authentication API', id: 'auth-api', level: 1 },
   { name: 'Users API', id: 'users-api', level: 1 },
@@ -155,7 +152,7 @@ const tocItems = [
 
 const TableOfContents = ({ activeId }: { activeId: string }) => {
   return (
-    <aside className="hidden xl:block w-64 pt-16 px-6 sticky top-0 h-screen overflow-y-auto">
+    <aside className="hidden xl:block w-64 shrink-0 sticky top-0 h-screen overflow-y-auto px-6 pt-16 border-l border-white/5">
       <h4 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
         <Menu className="w-3 h-3" /> On this page
       </h4>
@@ -244,7 +241,7 @@ export default function DocsPage() {
       <div className="max-w-[1600px] mx-auto flex">
         {/* Sidebar */}
         <aside className={`
-          fixed inset-y-0 left-0 z-40 w-72 bg-black border-r border-white/5 pt-24 lg:pt-8 px-6 overflow-y-auto transition-transform lg:translate-x-0 lg:static
+          fixed inset-y-0 left-0 z-40 w-72 bg-black border-r border-white/5 pt-24 lg:pt-8 px-6 overflow-y-auto transition-transform lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         `}>
           <div className="mb-10 hidden lg:flex items-center gap-2">
@@ -254,18 +251,6 @@ export default function DocsPage() {
               </div>
               <span className="text-lg font-medium tracking-tight">Renewly</span>
             </Link>
-          </div>
-
-          <div className="relative mb-8">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            <input 
-              type="text" 
-              placeholder="Search documentation..." 
-              className="w-full bg-white/5 border border-white/10 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-teal/50 transition-colors"
-            />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[10px] text-gray-500 font-mono">
-              Ctrl K
-            </div>
           </div>
 
           <nav className="space-y-8 pb-20">
@@ -305,14 +290,21 @@ export default function DocsPage() {
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
                 Renewly API documentation. A comprehensive API for managing user subscriptions with automated renewal reminders. Get started in minutes with our RESTful endpoints.
               </p>
-              <div className="flex gap-4">
-                <button className="px-4 py-2 glass rounded-lg text-sm flex items-center gap-2 hover:bg-white/10 transition-colors">
-                  <Copy className="w-4 h-4" /> Copy Markdown
-                </button>
-                <button className="px-4 py-2 glass rounded-lg text-sm flex items-center gap-2 hover:bg-white/10 transition-colors">
-                  Open <ChevronRight className="w-4 h-4 rotate-90" />
-                </button>
+              <div className="mb-8 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+                <div className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-3">
+                  Main URL
+                </div>
+                <a
+                  href={MAIN_API_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-sm text-teal transition-colors hover:bg-white/5"
+                >
+                  <span className="font-mono break-all">{MAIN_API_URL}</span>
+                  <ExternalLink className="h-4 w-4 shrink-0" />
+                </a>
               </div>
+              
             </section>
 
             <section id="quick-start" className="mb-20 scroll-mt-24">
@@ -323,7 +315,7 @@ export default function DocsPage() {
               
               <h3 className="text-xl font-medium mb-4">Base URL</h3>
               <div className="p-4 bg-white/5 border border-white/10 rounded-xl font-mono text-sm text-teal flex justify-between items-center">
-                https://renewly-api.onrender.com/api
+                {MAIN_API_URL}
                 <Copy className="w-4 h-4 text-gray-500 cursor-pointer hover:text-white transition-colors" />
               </div>
 
@@ -333,7 +325,7 @@ export default function DocsPage() {
               </p>
               <CodeBlock 
                 code={`curl -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-"https://renewly-api.onrender.com/api/subscriptions"`} 
+"${MAIN_API_URL}/subscriptions"`} 
               />
             </section>
 
@@ -367,13 +359,31 @@ export default function DocsPage() {
                 <h3 className="text-xl font-medium mt-12 mb-4 flex items-center gap-2">
                   <CreditCard className="w-5 h-5 text-teal" /> Subscriptions
                 </h3>
-                <EndpointTable endpoints={[
-                  { name: 'List All', method: 'GET', path: '/subscriptions' },
-                  { name: 'Create New', method: 'POST', path: '/subscriptions' },
-                  { name: 'Get Details', method: 'GET', path: '/subscriptions/:id' },
-                  { name: 'Cancel', method: 'PUT', path: '/subscriptions/:id/cancel' },
-                  { name: 'Upcoming', method: 'GET', path: '/subscriptions/upcoming-renewals' },
-                ]} />
+                <div id="subs-list" className="scroll-mt-24">
+                  <EndpointTable endpoints={[
+                    { name: 'List All', method: 'GET', path: '/subscriptions' },
+                  ]} />
+                </div>
+                <div id="subs-create" className="scroll-mt-24">
+                  <EndpointTable endpoints={[
+                    { name: 'Create New', method: 'POST', path: '/subscriptions' },
+                  ]} />
+                </div>
+                <div id="subs-details" className="scroll-mt-24">
+                  <EndpointTable endpoints={[
+                    { name: 'Get Details', method: 'GET', path: '/subscriptions/:id' },
+                  ]} />
+                </div>
+                <div id="subs-cancel" className="scroll-mt-24">
+                  <EndpointTable endpoints={[
+                    { name: 'Cancel', method: 'PUT', path: '/subscriptions/:id/cancel' },
+                  ]} />
+                </div>
+                <div id="subs-upcoming" className="scroll-mt-24">
+                  <EndpointTable endpoints={[
+                    { name: 'Upcoming', method: 'GET', path: '/subscriptions/upcoming-renewals' },
+                  ]} />
+                </div>
               </div>
             </section>
 
@@ -424,16 +434,7 @@ export default function DocsPage() {
               <p className="text-gray-400 leading-relaxed">
                 To ensure platform stability, we enforce rate limits on all API endpoints using Arcjet. The default limit is <span className="text-white font-medium">100 requests per minute</span> per IP address.
               </p>
-              <div className="mt-8 p-6 glass rounded-2xl flex items-start gap-4">
-                <Zap className="w-6 h-6 text-teal shrink-0" />
-                <div>
-                  <h4 className="font-medium mb-1">Need higher limits?</h4>
-                  <p className="text-sm text-gray-500 mb-4">Contact our sales team for enterprise plans with custom rate limits and dedicated support.</p>
-                  <button className="text-sm text-teal hover:underline flex items-center gap-1">
-                    Contact Sales <ExternalLink className="w-3 h-3" />
-                  </button>
-                </div>
-              </div>
+              
             </section>
           </div>
         </main>

@@ -8,7 +8,7 @@ const features = [
   {
     icon: <Shield className="w-6 h-6 text-teal" />,
     title: "Secure Auth",
-    description: "JWT-based signup/login. Rate limited to 100 req/min via Arcjet middleware.",
+    description: "JWT bearer auth for protected subscription and user routes. Rate limited to 100 req/min via Arcjet.",
   },
   {
     icon: <LayoutDashboard className="w-6 h-6 text-cyan" />,

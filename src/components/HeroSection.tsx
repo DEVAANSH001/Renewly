@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import VideoPlayer from './VideoPlayer';
-import { Button } from '@blinkdotnew/ui';
 import { Bell, Zap, Shield, ArrowRight } 
 
 from 'lucide-react';
+
+const MAIN_API_URL = 'https://renewly-api-fl2k.onrender.com/api';
 
 const badges = [
   { icon: <Bell className="w-4 h-4 text-teal" />, text: "Automated Reminders" },
@@ -64,8 +65,15 @@ const HeroSection: React.FC = () => {
           className="text-gray-400 text-lg md:text-xl max-w-xl mb-12 font-body"
         >
           Renewly automatically tracks your subscriptions and sends
-          renewal reminders before you're charged — secured, scheduled, and instant.
+          renewal reminders before you're charged — powered by a live Render API.
         </motion.p>
+
+        <div className="mb-10 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs md:text-sm text-gray-300 flex items-center gap-3">
+          <span className="uppercase tracking-[0.2em] text-gray-500">Live API</span>
+          <a href={MAIN_API_URL} target="_blank" rel="noreferrer" className="font-mono text-teal break-all hover:text-cyan transition-colors">
+            {MAIN_API_URL}
+          </a>
+        </div>
 
         {/* Buttons */}
         <motion.div
@@ -74,12 +82,12 @@ const HeroSection: React.FC = () => {
           transition={{ delay: 0.4, duration: 0.6 }}
           className="flex flex-col sm:flex-row items-center gap-4 mb-24"
         >
-          <Button className="h-14 px-8 rounded-full bg-white text-black hover:bg-gray-200 border-none text-lg font-medium group transition-all">
-            Get Started Free <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button  variant="outline" className="h-14 px-8 rounded-full bg-white/5 border-white/10 text-white hover:bg-white/10 text-lg backdrop-blur-sm">
+          <a href={MAIN_API_URL} target="_blank" rel="noreferrer" className="inline-flex h-14 items-center px-8 rounded-full bg-white text-black hover:bg-gray-200 border-none text-lg font-medium group transition-all">
+            Open Live API <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </a>
+          <a href="/docs" className="inline-flex h-14 items-center px-8 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 text-lg backdrop-blur-sm">
             View API Docs
-          </Button>
+          </a>
         </motion.div>
 
         {/* Tech Marquee */}

@@ -32,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/docs" element={<Docx />} />
+        <Route path="*" element={<LandingPage />} />
       </Routes>
     </div>
   );

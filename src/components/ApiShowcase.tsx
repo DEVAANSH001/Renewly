@@ -4,9 +4,11 @@ import { motion } from 'framer-motion';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 import { Check } from 'lucide-react';
 
+const MAIN_API_URL = 'https://renewly-api-fl2k.onrender.com/api';
+
 const ApiShowcase = () => {
   const code = `bash
-POST /api/v1/subscriptions
+POST ${MAIN_API_URL}/subscriptions
 Authorization: Bearer <your_jwt_token>
 Content-Type: application/json
 
@@ -18,9 +20,9 @@ Content-Type: application/json
   "renewalDate": "2025-05-01"
 }
 
-// ✓ Reminder auto-scheduled via QStash
-// ✓ Email alert queued via Resend
-// ✓ Rate limit: 100 req/min (Arcjet)`;
+// Live request against the Render-hosted API
+//  Response comes from the deployed backend
+//  Rate limit: 100 req/min (Arcjet)`;
 
   return (
     <section className="py-32 px-6 max-w-5xl mx-auto">
@@ -42,7 +44,7 @@ Content-Type: application/json
             <div className="w-3 h-3 rounded-full bg-red-500/50" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
             <div className="w-3 h-3 rounded-full bg-green-500/50" />
-            <span className="ml-2 text-xs font-mono text-gray-500">api/v1/subscriptions</span>
+            <span className="ml-2 text-xs font-mono text-gray-500">{MAIN_API_URL}/subscriptions</span>
           </div>
           
           <pre className="p-6 md:p-8 overflow-x-auto">
